@@ -1,14 +1,43 @@
+/*
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Fonts and text settings */
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* General settings and base colors */
+  line-height: 1.5;
+  color-scheme: light dark;
+  overflow-x: hidden;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  width: auto;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100vh;
+  /* background-color: var(--main-background-color);
+  color: var(--main-text-color); */
+  overflow-x: hidden;
 }
