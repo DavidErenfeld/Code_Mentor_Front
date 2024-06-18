@@ -44,7 +44,7 @@ const CodeBlockPage = () => {
         setTimeout(() => setIsSolved(false), 2000);
       }
     }
-  }, 300);
+  }, 100);
 
   return (
     <div className="section">
@@ -52,7 +52,7 @@ const CodeBlockPage = () => {
       <div className="code-editor-section">
         <div className="user-mode">
           {role === "mentor" ? (
-            <p>You are the mentor for this block, in read-only mode.</p>
+            <p>You are the mentor</p>
           ) : (
             <p>You are a student.</p>
           )}
