@@ -10,7 +10,7 @@ const Lobby = () => {
   };
 
   return (
-    <section className="section">
+    <section className="lobby-section section">
       <h2 className="title">Choose code block</h2>
       <div className="options-list">
         <p onClick={() => onClickItem(1)} className="list-item">

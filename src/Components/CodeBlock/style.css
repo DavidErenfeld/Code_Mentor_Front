@@ -2,16 +2,8 @@
   width: 60%;
 }
 
-.ace-editor-custom {
-  width: 100% !important;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-}
-
 .user-mode {
-  font-size: 1.6rem;
   text-align: start;
-  color: #ccc;
 }
 
 .success-animation {
