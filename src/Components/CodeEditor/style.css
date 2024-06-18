@@ -1,6 +1,22 @@
 .ace-editor-custom {
   width: 100% !important;
-  border-radius: 10px;
-  border: 2px solid #ccc;
   height: 40rem !important;
+  border-radius: 7px;
+  box-shadow: 0.1px 0.3px 3px 0.4px hsla(199, 50%, 80%, 0.475);
+  font-size: 1.6rem !important;
+}
+
+/*784*/
+@media (max-width: 49em) {
+  .ace-editor-custom {
+    font-size: 2rem !important;
+  }
+}
+
+/*480*/
+@media (max-width: 30em) {
+  .ace-editor-custom {
+    font-size: 1.6rem !important;
+    height: 30rem !important;
+  }
 }

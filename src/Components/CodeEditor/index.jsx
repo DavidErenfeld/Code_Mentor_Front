@@ -14,7 +14,6 @@ const CodeEditor = ({ code, onChange, role }) => {
         value={code}
         onChange={onChange}
         name="UNIQUE_ID_OF_DIV"
-        fontSize={16}
         showPrintMargin={true}
         showGutter={true}
         highlightActiveLine={true}
@@ -24,6 +23,7 @@ const CodeEditor = ({ code, onChange, role }) => {
           showLineNumbers: true,
           tabSize: 2,
           wrap: true,
+          // minLines: 15,
           autoScrollEditorIntoView: true,
           cursorStyle: "ace",
           useWorker: true,
