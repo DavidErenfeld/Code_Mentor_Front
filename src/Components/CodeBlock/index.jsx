@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { debounce } from "lodash";
+// import { debounce } from "lodash";
 import useSocket from "../Hooks/useSocket.js";
 import { getCodeBlockData } from "../Services/codeBlocksService.js";
 import "./style.css";
@@ -23,7 +23,7 @@ const CodeBlockPage = () => {
     fetchData();
   }, [numericId]);
 
-  const handleCodeChange = debounce((newCode) => {
+  const handleCodeChange = (newCode) => {
     if (role !== "mentor") {
       setCode((prev) => ({ ...prev, code: newCode }));
       sendCodeChange(newCode);
@@ -35,7 +35,7 @@ const CodeBlockPage = () => {
         setTimeout(() => setIsSolved(false), 2000);
       }
     }
-  }, 1000);
+  };
 
   return (
     <div className="section">

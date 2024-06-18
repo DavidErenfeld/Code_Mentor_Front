@@ -13,3 +13,10 @@
   justify-content: center;
   gap: 4rem;
 }
+
+/*480*/
+@media (max-width: 30em) {
+  .section {
+    margin-top: 9.6rem;
+  }
+}
