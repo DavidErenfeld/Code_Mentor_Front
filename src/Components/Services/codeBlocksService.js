@@ -1,6 +1,8 @@
 export const getCodeBlockData = async (numericId) => {
   try {
-    const response = await fetch(`http://localhost:3000/codeBlocks`);
+    const response = await fetch(
+      `https://boiling-springs-91338-006b899baec7.herokuapp.com/codeBlocks`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch: " + response.statusText);
     }

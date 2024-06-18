@@ -11,7 +11,7 @@ import "./style.css";
 const CodeBlockPage = () => {
   const { id } = useParams();
   const numericId = parseInt(id, 10);
-  const [code, setCode] = useState({ title: "", code: "" });
+  const [code, setCode] = useState({ title: "", code: "", solution: "" });
   const [role, setRole] = useState("");
   const [mentorId, setMentorId] = useState(null);
   const [isSolved, setIsSolved] = useState(false);
@@ -35,9 +35,12 @@ const CodeBlockPage = () => {
     if (role !== "mentor") {
       setCode((prev) => ({ ...prev, code: newCode }));
       sendCodeChange(newCode);
-      if (newCode.trim() === code.solution.trim()) {
+      if (
+        newCode.trim().replace(/\s+$/gm, "") ===
+        code.solution.trim().replace(/\s+$/gm, "")
+      ) {
         setIsSolved(true);
-        setTimeout(() => setIsSolved(false), 2000);
+        setTimeout(() => setIsSolved(false), 6000);
       }
     }
   };
@@ -50,7 +53,7 @@ const CodeBlockPage = () => {
           {role === "mentor" ? (
             <p>You are the mentor for this block, in read-only mode.</p>
           ) : (
-            <p>You are a student, your mentor's ID is {mentorId}.</p>
+            <p>You are a student.</p>
           )}
         </div>
         <AceEditor
@@ -79,7 +82,7 @@ const CodeBlockPage = () => {
           }}
         />
       </div>
-      {isSolved && <div className="success-animation">🎉 Correct! 🎉</div>}
+      {isSolved && <div className="success-animation">😊</div>}
     </div>
   );
 };
