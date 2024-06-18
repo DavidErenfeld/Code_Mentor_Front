@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AceEditor from "react-ace";
+import { debounce } from "lodash";
 import useSocket from "../Hooks/useSocket.js";
 import { getCodeBlockData } from "../Services/codeBlocksService.js";
 import "ace-builds/src-noconflict/mode-javascript";
@@ -31,7 +32,7 @@ const CodeBlockPage = () => {
     fetchData();
   }, [numericId]);
 
-  const handleCodeChange = (newCode) => {
+  const handleCodeChange = debounce((newCode) => {
     if (role !== "mentor") {
       setCode((prev) => ({ ...prev, code: newCode }));
       sendCodeChange(newCode);
@@ -40,10 +41,10 @@ const CodeBlockPage = () => {
         code.solution.trim().replace(/\s+$/gm, "")
       ) {
         setIsSolved(true);
-        setTimeout(() => setIsSolved(false), 6000);
+        setTimeout(() => setIsSolved(false), 2000);
       }
     }
-  };
+  }, 300);
 
   return (
     <div className="section">
