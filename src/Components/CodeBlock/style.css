@@ -1,5 +1,40 @@
+.code-editor-section {
+  width: 60%;
+}
+
 .ace-editor-custom {
-  width: 50%;
+  width: 100% !important;
   border-radius: 10px;
   border: 2px solid #ccc;
+}
+
+.user-mode {
+  font-size: 1.6rem;
+  text-align: start;
+  color: #ccc;
+}
+
+.success-animation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
