@@ -1,3 +1,10 @@
+.loater-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .code-editor-section {
   position: relative;
   width: 60%;

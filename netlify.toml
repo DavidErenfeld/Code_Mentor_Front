@@ -1,10 +1,15 @@
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
 
-[[redirects]]
-  from = "/api/*"
-  to = "https://api.example.com/:splat"
-  status = 200
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    X-Content-Type-Options = "nosniff"
