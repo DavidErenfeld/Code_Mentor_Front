@@ -48,6 +48,11 @@ p {
   font-size: 1.6rem;
 }
 
+.text-danger {
+  font-size: 1.4rem;
+  color: #dc2626;
+}
+
 /*784*/
 @media (max-width: 49em) {
   html {

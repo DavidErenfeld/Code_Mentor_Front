@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useSocket from "../Hooks/useSocket.js";
-import { getCodeBlockData } from "../Services/codeBlocksService.js";
+import useSocket from "../../Hooks/useSocket.js";
+import { getCodeBlockData } from "../../Services/codeBlocksService.js";
 import "./style.css";
 import CodeEditor from "../CodeEditor/index.jsx";
 import SuccessMessage from "../SuccessMessage/index.jsx";
@@ -12,19 +12,30 @@ const CodeBlockPage = () => {
   const [code, setCode] = useState({ title: "", code: "", solution: "" });
   const [role, setRole] = useState("");
   const [isSolved, setIsSolved] = useState(false);
+  const [fetchError, setFetchError] = useState(false);
 
-  const { sendCodeChange } = useSocket(numericId, setCode, setRole);
+  const { sendCodeChange, isConnected } = useSocket(
+    numericId,
+    setCode,
+    setRole
+  );
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCodeBlockData(numericId);
-      setCode(data);
+      try {
+        const data = await getCodeBlockData(numericId);
+        setCode(data);
+        setFetchError(false); // Reset fetch error if data is fetched successfully
+      } catch (error) {
+        console.error("Failed to fetch code block data:", error);
+        setFetchError(true); // Set fetch error if fetching fails
+      }
     };
     fetchData();
   }, [numericId]);
 
   const handleCodeChange = (newCode) => {
-    if (role !== "mentor") {
+    if (role !== "mentor" && isConnected) {
       setCode((prev) => ({ ...prev, code: newCode }));
       sendCodeChange(newCode);
       if (
@@ -38,14 +49,32 @@ const CodeBlockPage = () => {
   };
 
   return (
-    <div className="section">
+    <section className="section">
       <h2 className="title">{code.title}</h2>
-      <div className="code-editor-section">
-        <p className="user-mode">{`${role} mode`}</p>
-        <CodeEditor code={code.code} onChange={handleCodeChange} role={role} />
-        {isSolved && <SuccessMessage />}
-      </div>
-    </div>
+      {fetchError ? (
+        <p className="text-danger">
+          Failed to fetch code block data. Please try again later.
+        </p>
+      ) : (
+        <div className="code-editor-section">
+          <p className="user-mode">{`${role} mode`}</p>
+
+          <>
+            <CodeEditor
+              code={code.code}
+              onChange={handleCodeChange}
+              role={role}
+            />
+            {isSolved && <SuccessMessage />}
+            {!isConnected && (
+              <p className="text-danger">
+                Network error, please try again later
+              </p>
+            )}
+          </>
+        </div>
+      )}
+    </section>
   );
 };
 
