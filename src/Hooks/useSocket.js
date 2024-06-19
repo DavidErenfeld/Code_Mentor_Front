@@ -10,11 +10,11 @@ const useSocket = (blockId, setCode, setRole) => {
         socket.connect();
         setIsConnected(true);
       } catch (error) {
-        setIsConnected(false);
+        setTimeout(() => setIsConnected(false), 4000);
       }
 
-      socket.on("connect_error", (error) => {
-        setIsConnected(false);
+      socket.on("connect_error", () => {
+        setTimeout(() => setIsConnected(false), 4000);
       });
 
       socket.emit("join code block", blockId);
@@ -32,7 +32,7 @@ const useSocket = (blockId, setCode, setRole) => {
       });
 
       socket.on("disconnect", () => {
-        setIsConnected(false);
+        setTimeout(() => setIsConnected(false), 4000);
       });
     };
 
