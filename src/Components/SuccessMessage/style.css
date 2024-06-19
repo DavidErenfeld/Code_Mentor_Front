@@ -1,0 +1,37 @@
+@keyframes growAndFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.emoji-icon {
+  height: 30rem;
+  width: 30rem;
+  fill: #f5f50b;
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: growAndFadeIn 1s ease-in-out forwards;
+}
+
+/*784*/
+@media (max-width: 49em) {
+  .code-editor-section {
+    width: 95%;
+  }
+}
+
+/*480*/
+@media (max-width: 30em) {
+  .emoji-icon {
+    height: 20rem;
+    width: 20rem;
+  }
+}

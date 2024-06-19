@@ -1,34 +1,10 @@
 .code-editor-section {
+  position: relative;
   width: 60%;
 }
 
 .user-mode {
   text-align: start;
-}
-
-.success-animation {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20rem;
-  color: rgb(255, 255, 255);
-  animation: fadeInOut 2s ease-in-out;
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 /*784*/

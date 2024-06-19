@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { debounce } from "lodash";
 import useSocket from "../Hooks/useSocket.js";
 import { getCodeBlockData } from "../Services/codeBlocksService.js";
 import "./style.css";
 import CodeEditor from "../CodeEditor/index.jsx";
+import SuccessMessage from "../SuccessMessage/index.jsx";
 
 const CodeBlockPage = () => {
   const { id } = useParams();
@@ -32,7 +32,7 @@ const CodeBlockPage = () => {
         code.solution.trim().replace(/\s+$/gm, "")
       ) {
         setIsSolved(true);
-        setTimeout(() => setIsSolved(false), 2000);
+        setTimeout(() => setIsSolved(false), 4000);
       }
     }
   };
@@ -43,8 +43,8 @@ const CodeBlockPage = () => {
       <div className="code-editor-section">
         <p className="user-mode">{`${role} mode`}</p>
         <CodeEditor code={code.code} onChange={handleCodeChange} role={role} />
+        {isSolved && <SuccessMessage />}
       </div>
-      {isSolved && <div className="success-animation">😊</div>}
     </div>
   );
 };
