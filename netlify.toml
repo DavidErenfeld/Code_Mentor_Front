@@ -7,3 +7,8 @@
   from = "/api/*"
   to = "https://api.example.com/:splat"
   status = 200
+
+[[headers]]
+  for = "/node_modules/ace-builds/src-noconflict/*"
+  [headers.values]
+    Content-Type = "application/javascript"
