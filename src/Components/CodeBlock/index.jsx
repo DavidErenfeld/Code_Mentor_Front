@@ -14,7 +14,7 @@ const CodeBlockPage = () => {
   const [role, setRole] = useState("");
   const [isSolved, setIsSolved] = useState(false);
   const [fetchError, setFetchError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { sendCodeChange, isConnected } = useSocket(
     numericId,
@@ -25,7 +25,6 @@ const CodeBlockPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
         const data = await getCodeBlockData(numericId);
         setCode(data);
         setFetchError(false);
