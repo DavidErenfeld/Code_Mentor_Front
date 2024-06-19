@@ -3,6 +3,8 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/worker-javascript";
+import ace from "ace-builds/src-noconflict/ace";
+ace.config.set("basePath", "/node_modules/ace-builds/src-noconflict");
 import "./style.css";
 
 const CodeEditor = ({ code, onChange, role }) => {
