@@ -1,4 +1,3 @@
-import { Picker, Emoji } from "emoji-mart";
 import "./style.css";
 
 const SuccessMessage = () => {

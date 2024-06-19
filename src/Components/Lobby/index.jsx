@@ -1,7 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-
+const items = [
+  { title: "Loop Example", idItem: 1 },
+  { title: "Function Example", idItem: 2 },
+  { title: "Async Example", idItem: 3 },
+  { title: "Array Example", idItem: 4 },
+];
 const Lobby = () => {
   const navigate = useNavigate();
 
@@ -13,18 +18,15 @@ const Lobby = () => {
     <section className="lobby-section section">
       <h2 className="title">Choose code block</h2>
       <div className="options-list">
-        <p onClick={() => onClickItem(1)} className="list-item">
-          Loop Example
-        </p>
-        <p onClick={() => onClickItem(2)} className="list-item">
-          Function Example
-        </p>
-        <p onClick={() => onClickItem(3)} className="list-item">
-          Async Example
-        </p>
-        <p onClick={() => onClickItem(4)} className="list-item">
-          Array Example
-        </p>
+        {items.map((item) => (
+          <p
+            onClick={() => onClickItem(item.idItem)}
+            key={item.idItem}
+            className="list-item"
+          >
+            {item.title}
+          </p>
+        ))}
       </div>
     </section>
   );

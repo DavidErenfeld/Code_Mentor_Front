@@ -25,14 +25,14 @@ const CodeBlockPage = () => {
       try {
         const data = await getCodeBlockData(numericId);
         setCode(data);
-        setFetchError(false); // Reset fetch error if data is fetched successfully
+        setFetchError(false);
       } catch (error) {
         console.error("Failed to fetch code block data:", error);
-        setFetchError(true); // Set fetch error if fetching fails
+        setFetchError(true);
       }
     };
     fetchData();
-  }, [numericId]);
+  }, [id]);
 
   const handleCodeChange = (newCode) => {
     if (role !== "mentor" && isConnected) {
@@ -59,19 +59,15 @@ const CodeBlockPage = () => {
         <div className="code-editor-section">
           <p className="user-mode">{`${role} mode`}</p>
 
-          <>
-            <CodeEditor
-              code={code.code}
-              onChange={handleCodeChange}
-              role={role}
-            />
-            {isSolved && <SuccessMessage />}
-            {!isConnected && (
-              <p className="text-danger">
-                Network error, please try again later
-              </p>
-            )}
-          </>
+          <CodeEditor
+            code={code.code}
+            onChange={handleCodeChange}
+            role={role}
+          />
+          {isSolved && <SuccessMessage />}
+          {!isConnected && (
+            <p className="text-danger">Network error, please try again later</p>
+          )}
         </div>
       )}
     </section>
