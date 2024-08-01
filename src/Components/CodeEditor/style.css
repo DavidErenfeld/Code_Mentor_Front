@@ -1,4 +1,5 @@
 .ace-editor-custom {
+  position: relative;
   width: 100% !important;
   height: 40rem !important;
   border-radius: 7px;

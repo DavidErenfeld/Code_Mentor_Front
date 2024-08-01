@@ -34,3 +34,13 @@
     width: 95%;
   }
 }
+
+/*384*/
+@media (max-width: 24em) {
+  .users-count {
+    position: absolute;
+    bottom: -5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
