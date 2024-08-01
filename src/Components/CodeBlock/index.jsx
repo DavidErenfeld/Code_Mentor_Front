@@ -12,6 +12,7 @@ const CodeBlockPage = () => {
   const numericId = parseInt(id, 10);
   const [code, setCode] = useState({ title: "", code: "", solution: "" });
   const [role, setRole] = useState("");
+  const [usersCount, setUsersCount] = useState(0);
   const [isSolved, setIsSolved] = useState(false);
   const [fetchError, setFetchError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -19,7 +20,8 @@ const CodeBlockPage = () => {
   const { sendCodeChange, isConnected } = useSocket(
     numericId,
     setCode,
-    setRole
+    setRole,
+    setUsersCount
   );
 
   useEffect(() => {
@@ -61,14 +63,17 @@ const CodeBlockPage = () => {
       ) : (
         <section className="section">
           <h2 className="title">{code.title}</h2>
+
           {fetchError ? (
             <p className="text-danger">
               Failed to fetch code block data. Please try again later.
             </p>
           ) : (
             <div className="code-editor-section">
-              <p className="user-mode">{`${role} mode`}</p>
-
+              <div className="code-block-ditails">
+                <p className="user-mode">{`${role} mode`}</p>
+                <p className="users-count">{`${usersCount} users connected`}</p>
+              </div>
               <CodeEditor
                 code={code.code}
                 onChange={handleCodeChange}

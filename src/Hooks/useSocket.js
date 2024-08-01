@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import socket from "../Services/Socket.js";
 
-const useSocket = (blockId, setCode, setRole) => {
+const useSocket = (blockId, setCode, setRole, setUsersCount) => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
@@ -18,6 +18,13 @@ const useSocket = (blockId, setCode, setRole) => {
       });
 
       socket.emit("join code block", blockId);
+
+      socket.on("user count", (usersCount) => {
+        try {
+          setUsersCount(usersCount);
+          console.log(usersCount);
+        } catch (error) {}
+      });
 
       socket.on("code update", (updatedCode) => {
         try {

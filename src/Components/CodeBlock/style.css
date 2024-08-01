@@ -10,8 +10,22 @@
   width: 60%;
 }
 
+.code-block-ditails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0rem;
+}
+
 .user-mode {
-  text-align: start;
+  align-self: self-end;
+}
+
+.users-count {
+  padding: 0.5rem 1rem;
+  background-color: #7ee23b;
+  color: #091601;
+  border-radius: 7px;
 }
 
 /*784*/
